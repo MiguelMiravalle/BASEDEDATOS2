@@ -42,3 +42,8 @@ END;
                 CONSTRAINT FK1_ID_PELICULA FOREIGN KEY(ID_PELICULA) REFERENCES PELICULA(ID_PELICULA)
                 );
                 DESCRIBE HORARIO;
+CREATE SEQUENCE SEC_PELICULA
+start with 1
+increment by 1
+nomaxvalue;
+
