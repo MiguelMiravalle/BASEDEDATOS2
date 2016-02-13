@@ -1,0 +1,46 @@
+create table paises(id_pais varchar2(4),
+                    nombre varchar2(100),
+                    habitantes integer,
+                    idioma varchar2(40),
+          constraint pk_id_pais primary key(id_pais));
+
+
+create table estudiantes(id_estudiante integer,
+                         id_pais varchar2(4),
+                         carrera  varchar2(100),
+                         edad  integer,
+         constraint pk_id_estudiante primary key(id_estudiante),
+         constraint fk_pais foreign key(id_pais)references paises(id_pais));
+
+
+insert into paises values('mx','Mexico',9000000,'español');
+insert into paises values('usa','Estados Unidos',12000000,'ingles');
+insert into paises values('jpa','Japon',8000000,'japones');
+insert into paises values('ger','Alemania',14000000,'aleman');
+insert into paises values('bra','Brasil',23000000,'Portuges');
+
+
+insert into estudiantes values('1','usa','nutricion',20);
+insert into estudiantes values('2','jpa','pedagogia',25);
+insert into estudiantes values('3','ger','derecho',23);
+insert into estudiantes values('4','bra','psicologia',22);
+insert into estudiantes values('5','mx','fisioterapia',20);
+insert into estudiantes values('6','mx','gastronomia',21);
+insert into estudiantes values('7','mx','comunicacion',27);
+
+select * from paises;
+
+select * from estudiantes;
+
+declare 
+cursor cur_paises is select * from paises;
+cursor cur_estudiante is select * from estudiantes;
+begin 
+
+for fila in cur_paises loop
+for fila2 in cur_estudiante loop
+dbms_output.put_line('Nombre_Pais  ' ||fila.nombre|| '    Habitantes  ' || fila.habitantes ||'   Carrera' || fila2.carrera);
+end loop;
+end loop;
+
+end;
