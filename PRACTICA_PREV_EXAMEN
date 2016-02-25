@@ -1,0 +1,36 @@
+CREATE TABLE libros(
+       libro_id integer,
+       isbn   varchar2(14),
+       titulo varchar2(200),
+       resumen varchar2(2000),
+       autor   varchar2(200),
+       fecha_publicacion date,
+       num_pag number,
+constraint pk_libro_id primary key(libro_id));
+
+
+
+--Creando una secuencia que se incrementa de uno en uno
+create sequence sec_libros
+start with 1
+increment by 1
+nomaxvalue;
+
+--Activa las salidas (los procedimientos pueden o no tener argumentos )
+set serveroutput on;
+
+--Creando procedimiento guardarlibros----
+create or replace procedure guardarlibros(my_libro_id out int,my_isbn in varchar2,my_titulo in varchar2,my_resumen in varchar2, my_autor in varchar2,my_dia in int,my_mes in varchar2,my_anio in int,my_pag in number);
+as
+----se declaran variables---
+my_fecha_publicacion:=to_date(''||dia||'-'||mes||'-'||anio);
+select sec_libros into my_libro_id from dual;
+insert into libros values(my_libro_id, );
+
+begin
+
+---invocar procedimento que tienen valores de entrada--
+id_libro integer;
+
+guardarlibro();
+end 
