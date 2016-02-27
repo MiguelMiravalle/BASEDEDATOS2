@@ -1,0 +1,38 @@
+create table xxx(
+  id_xxx integer,
+  edad   integer);
+
+
+create or replace trigger xxx_mayor_edad before insert on xxx for each row   --for each row para acada fia 
+begin
+if :new.edad < 18 then
+raise_application_error(-20001,'lo siento ,no registrado');
+end if;
+end;
+
+/
+
+insert into xxx values(1,11);
+select * from  xxx;
+
+--////////////////////////////////////////////
+create table nomina_xxx(
+  id_nominaxxx integer,
+  login       varchar2(10),
+  sueldo   integer);
+
+
+insert into nomina_xxx values(1,'registrado',2000);
+
+create or replace trigger  xxx_actualizar_sueldo before update on nomina_xxx for each row
+begin
+:new.sueldo:=:new.sueldo+:old.sueldo;
+end;
+
+
+update nomina_xxx set
+sueldo=500 where id_nominaxxx=1;
+
+select *from nomina_xxx;
+
+end;
