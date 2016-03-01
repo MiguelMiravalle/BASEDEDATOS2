@@ -1,3 +1,6 @@
+--resolucion de ejercicio https://github.com/curso-basedatos/base-datos/blob/master/Practica4.md
+--
+
 CREATE TABLE libros(
        libro_id integer,
        isbn   varchar2(14),
