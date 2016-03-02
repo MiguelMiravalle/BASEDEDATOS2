@@ -51,7 +51,7 @@ select * from empleado_ventas;
 setserveroutput on;
 
 
-
+--CONSULTA CON CURSORES--
 declare
 cursor cur_emp is select * from empleado_ventas;
 cursor cur_suc is select * from sucursal;
@@ -69,5 +69,5 @@ end loop;
 end;
 /
 set serveroutput on;
-
+-- LO MISMO PERO CON JOIN--
 SELECT EMPLEADO_VENTAS.ID_CLIENTE, EMPLEADO_VENTAS.NOMBRE_CLIENTE, SUCURSAL.NOMBRE FROM EMPLEADO_VENTAS JOIN SUCURSAL  ON EMPLEADO_VENTAS.ID_CLIENTE=SUCURSAL.ID_CLIENTE;
